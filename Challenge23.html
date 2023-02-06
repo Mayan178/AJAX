@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Challenge 23</title>
+    </head>
+    <body>
+        <input type="text" value="" name="Yourname" id="Yourname" placeholder="Your full name"/>
+        <button id="message_btn" onclick="loadMessage()">Go</button>
+        <p id="Message"></p>
+
+		<script type="text/javascript">
+            // function using AJAX to retrieve the text from another HTML file and displaying a personalised message to the user
+			function loadMessage() {
+                var xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function() {
+                    if (this.readyState == 4 && this.status == 200) {
+                    document.getElementById("Message").innerHTML = "Welcome "+document.getElementById("Yourname").value+ "! "+
+                    this.responseText;
+                    }
+                };
+                xhttp.open("GET", "Message.html", true);
+                xhttp.send();
+            }
+           
+		</script>
+    </body>
+</html>
